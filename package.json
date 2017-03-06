@@ -1,0 +1,13 @@
+{
+    "name"         : "node-red-contrib-WoT-Parser",
+    "version"      : "0.0.1",
+    "description"  : "A Thing-Description parser for node-red",
+    "dependencies": {
+    },
+    "keywords": [ "node-red" ],
+    "node-red"     : {
+        "nodes": {
+            "WoT-Parser": "wot-parser/wot-parser.js"
+        }
+    }
+}

@@ -1,0 +1,41 @@
+<script type="text/javascript">
+    RED.nodes.registerType('WoT-Parser',{
+        category: 'function',
+        color: '#a6bbcf',
+        defaults: {
+            name: {value: ""},
+			url_host: {value: "192.168.0.133", required: true},
+			url_port: {value: 8080},
+			url_path: {value: "/cnb/floor_h/corridor/.td"}
+        },
+        inputs:1,
+        outputs:1,
+        icon: "file.png",
+        label: function() {
+            return this.name || "WoT-Parser";
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="WoT-Parser">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i>Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+	</div>
+	<div class="form-row">
+		<label for="node-input-url_host"><i class="icon-tag"></i>URL-Host</label>
+        <input type="text" id="node-input-url_host" placeholder="URL-Host">
+    </div>
+	<div class="form-row">
+		<label for="node-input-url_port"><i class="icon-tag"></i>URL-Port</label>
+        <input type="text" id="node-input-url_port" placeholder="URL-Port">
+    </div>
+	<div class="form-row">
+		<label for="node-input-url_path"><i class="icon-tag"></i>URL-Path</label>
+        <input type="text" id="node-input-url_path" placeholder="URL-Path">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="WoT-Parser">
+    <p>A simple node that parses thing-descriptions from an specified url</p>
+</script>
