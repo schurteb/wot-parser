@@ -11,6 +11,9 @@ module.exports = function(RED) {
 			var rawData = '';
 			var parsedData = '';
 			
+			// reset status to normal
+			node.status({});
+			
 			http_get(config.url_host, config.url_port, config.url_path, http_get_callback);
 			
 			/**
@@ -30,7 +33,14 @@ module.exports = function(RED) {
 				  path: path
 				};
 
-				http.get(options, callback);
+				var request = http.get(options, callback);
+					
+				request.on('error', function(exception) {
+					// handle errors like ECONNREFUSED
+					node.error(exception.message);
+					node.status({fill:"red",shape:"ring",text:exception.message});
+					request.abort();
+				});
 			}
 			
 			/**
@@ -48,6 +58,7 @@ module.exports = function(RED) {
 						node.send(msg);
 					}
 				});
+				
 				response.on('end', () => {
 					try {
 						msg.payload = JSON.parse(rawData);
