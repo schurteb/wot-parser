@@ -4,7 +4,7 @@
         color: '#a6bbcf',
         defaults: {
             name: {value: ""},
-			url_host: {value: "192.168.0.133", required: true},
+			url_host: {value: "192.168.0.133", required: true}, // TODO possible regex: ((:http(s)?:\/\/){0}([\w-]+\.)+[\w-]+)
 			url_port: {value: 8080},
 			url_path: {value: "/cnb/floor_h/corridor/.td"}
         },
@@ -38,4 +38,32 @@
 
 <script type="text/x-red" data-help-name="WoT-Parser">
     <p>A simple node that parses thing-descriptions from an specified url</p>
+	
+	
+	<p>
+		<b>URL-Host:</b>
+		Please specify URL-Host according to the root-address of the server to read from. Path can be specified in the <i>URL-Path</i>.
+		<br />
+		<b>Example:</b>
+		<i>http://example.org/wot-server => http://example.org</i><br />
+		<i>http://192.168.0.1/wot-server => 192.168.0.1</i>
+	</p>
+	<br />
+	<p>
+		<b>URL-Port:</b>
+		Please specify URL-Port according to the port on which the WoT-Server is listening.
+		<br />
+		<b>Example:</b>
+		<i>http://example.org:8080/wot-server => 8080</i><br />
+		<i>http://192.168.0.1:8080/wot-server => 8080</i>
+	</p>
+	<br />
+	<p>
+		<b>URL-Path:</b>
+		Please specify URL-Path (if not on root-address) according to the directory of the server to read from.
+		<br />
+		<b>Example:</b>
+		<i>http://example.org/page.html => /page.html</i><br />
+		<i>http://192.168.0.1/page.html => /page.html</i>
+	</p>
 </script>
